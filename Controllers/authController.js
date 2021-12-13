@@ -38,7 +38,7 @@ const register = (req, res, next) => {
 
 }
 
-//LOGIN
+//LOGIN +TESTED+
 const login = (req, res, next) => {
     var username = req.body.username
     var password = req.body.password
@@ -51,7 +51,7 @@ const login = (req, res, next) => {
                     res.json ({error: err})
                 }
                 if(result) {
-                    let token = jwt.sign({name: user.name}, 'verySecretValue', {expiresIn:'1h'})
+                    let token = jwt.sign({name: user.name}, 'secretValue', {expiresIn:'1h'})
                     res.json ({message: 'LOGIN Successful', token })
                 }
                 else {
