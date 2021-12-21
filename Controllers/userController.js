@@ -1,5 +1,6 @@
 const {User} = require('../Models/user');
 
+
 //Get the users list +TESTED+
 const index = (req, res, next) => {
     User.find().select('name email')
@@ -21,4 +22,44 @@ const show = (req, res, next) =>{
     .catch(error => { message:'The user with the given ID was not found'})
 }
 
-module.exports = { index, show }
+//Update a user +TESTED+
+const UpdateUser = (req, res, next) => {
+    let userID = req.body.userID
+
+    let updateData = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        phone: req.body.phone,
+        address: req.body.address,
+        isAssistant: req.body.isAssistant,
+        age: req.body.age,
+        bloodType: req.body.bloodType,
+        assistantPhone: req.body.assistantPhone, 
+        assistantName: req.body.assistantName,
+        emergencyNum: req.body.emergencyNum,
+    }
+    User.findByIdAndUpdate(userID, {
+            $set: updateData
+        })
+        .then(() => {
+            res.json({message: 'USER updated successfully'})
+        })
+        .catch(error => {
+            res.json({message: 'An error Occured',error})
+        })
+}
+
+//Delete a user +TESTED+
+const DeleteUser = (req, res, next) => {
+    let userID = req.body.userID
+    User.findByIdAndRemove(userID)
+        .then(() => {
+            res.json({message: 'USER removed successfully'})
+        })
+        .catch(error => {
+            res.json({message: 'An error Occured !',error})
+        })
+}
+
+module.exports = { index, show, DeleteUser, UpdateUser }

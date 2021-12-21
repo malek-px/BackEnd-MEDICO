@@ -20,9 +20,11 @@ app.use(morgan('tiny'));
 //Routes
 const usersRoutes = require('./Routes/users');
 const authRoutes = require('./Routes/auth')
+const medicationsRoutes = require('./Routes/medications');
 
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}`, authRoutes);
+app.use(`${api}/medications`, medicationsRoutes);
 
 //Connecting server
 app.listen(3000, ()=>{
