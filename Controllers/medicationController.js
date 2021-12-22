@@ -12,13 +12,38 @@ const showAll = (req, res, next) => {
 }
 
 //Get a meddication +TESTED+
-const showOne = (req, res, next) =>{
+const showOne = async (req, res) =>{
     let medicationID = req.body.medicationID 
-    Medication.findById(medicationID)
-    .then(response => {
-        res.json ({response})
-    })
-    .catch(error => { message:'The medication with the given ID was not found'})
+    const medication = await Medication.findById(medicationID);
+    if(!medication) {
+        res.status(500).json({message: 'The medication with the given ID was not found'})
+    }
+    res.status(200).send(medication);
+}
+
+//Update a medication +TESTED+
+const UpdateMedication = (req, res, next) => {
+    let medicationID = req.body.medicationID
+
+    let updateData = {
+        ref:req.body.ref,
+        name: req.body.name,
+        description: req.body.description,
+        dose: req.body.dose,
+        period: req.body.period,
+        quantity: req.body.quantity,
+        expDate: req.body.expDate,
+        image: req.body.image
+    }
+    Medication.findByIdAndUpdate(medicationID, {
+            $set: updateData
+        })
+        .then(() => {
+            res.json({message: 'Medication updated successfully'})
+        })
+        .catch(error => {
+            res.json({message: 'An error Occured',error})
+        })
 }
 
 //Delete a medication +TESTED+
@@ -58,4 +83,4 @@ const add = ( req, res, next ) => {
         })
 }
 
-module.exports = { showAll, showOne, remove, add }
+module.exports = { showAll, showOne, remove, add, UpdateMedication }

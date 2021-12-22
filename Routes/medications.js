@@ -8,6 +8,9 @@ router.get('/showAll', MedicationContoller.showAll)
 //Get a medication +TESTED+
 router.get('/showOne', MedicationContoller.showOne)
 
+//Update a medication +TESTED+
+router.post('/update',MedicationContoller.UpdateMedication)
+
 //Delete a medication +TESTED+
 router.delete('/remove', MedicationContoller.remove)
 
