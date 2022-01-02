@@ -1,4 +1,6 @@
 const {Medication} = require('../Models/medication');
+const multer = require('multer');
+const mongoose = require('mongoose');
 
 //Get the medications list +TESTED+
 const showAll = (req, res, next) => {
@@ -62,7 +64,7 @@ const remove = (req, res, next) => {
 }
 
 //Add a medication +TESTED+
-const add = ( req, res, next ) => {
+/*const add = ( req, res, next ) => {
     let medication = new Medication ({
         ref:req.body.ref,
         name: req.body.name,
@@ -81,6 +83,11 @@ const add = ( req, res, next ) => {
             res.json({
                 message:'The medication cannot be added',error})
         })
-}
+}*/
 
-module.exports = { showAll, showOne, remove, add, UpdateMedication }
+
+
+
+
+
+module.exports = { showAll, showOne, remove, UpdateMedication }
