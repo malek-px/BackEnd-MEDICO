@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UserContoller = require('../Controllers/userController')
+const nodemailer = require('nodemailer');
 
 const authenticate = require('../Middleware/authenticate')
 
@@ -15,5 +16,8 @@ router.post('/updateUser',UserContoller.UpdateUser)
 
 //Delete a user +TESTED+
 router.post('/deleteUser', UserContoller.DeleteUser)
+
+//Forget password
+
 
 module.exports = router;

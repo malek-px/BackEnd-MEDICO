@@ -24,7 +24,7 @@ const register = (req, res, next) => {
             assistantPhone: req.body.assistantPhone, 
             assistantName: req.body.assistantName,
             emergencyNum: req.body.emergencyNum,
-    
+
         })
          user.save()
          .then(user => {
@@ -33,9 +33,7 @@ const register = (req, res, next) => {
          .catch (err => {
              return res.status(400).send("An ERROR occured")
          })
-         
     })
-
 }
 
 //LOGIN +TESTED+
