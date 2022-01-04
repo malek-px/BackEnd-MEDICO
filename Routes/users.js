@@ -14,6 +14,9 @@ router.get('/show', UserContoller.show)
 //Get list of patient of one assistant
 router.get('/showPatients', UserContoller.getPatients)
 
+//Get assitant name from phone num
+router.get('/findAssistant', UserContoller.findAssistanseName)
+
 //Update a user +TESTED+
 router.post('/updateUser',UserContoller.UpdateUser)
 

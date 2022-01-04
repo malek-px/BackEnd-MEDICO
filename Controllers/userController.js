@@ -12,6 +12,18 @@ const index = (req, res, next) => {
         })
 }
 
+//Get assistant name from phone num
+const findAssistanseName = (req, res, next) => {
+    let phone = req.body.assistantPhone
+    User.find({phone : phone}).select('name')
+        .then(response => {
+            res.json({ name : response[0].name })
+        })
+        .catch(error => {
+            res.json({message:'Could  not show the assistant'})
+        })
+}
+
 const getPatients = (req, res, next) => {
     let assistantPhone = req.body.assistantPhone
     User.find({assistantPhone :  assistantPhone}).select('name email')
@@ -73,4 +85,4 @@ const DeleteUser = (req, res, next) => {
         })
 }
 
-module.exports = { index, show, DeleteUser, UpdateUser , getPatients}
+module.exports = { index, show, DeleteUser, UpdateUser , getPatients,findAssistanseName}

@@ -51,7 +51,7 @@ const login = (req, res, next) => {
                 }
                 if(result) {
                     let token = jwt.sign({name: user.name}, 'secretValue', {expiresIn:'1h'})
-                    res.json ({message: 'LOGIN Successful', token })
+                    res.json (user)
                 }
                 else {
                     res.status(404)
