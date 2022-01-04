@@ -11,6 +11,9 @@ router.get('/showAll', authenticate, UserContoller.index)
 //Get a user +TESTED+
 router.get('/show', UserContoller.show)
 
+//Get list of patient of one assistant
+router.get('/showPatients', UserContoller.getPatients)
+
 //Update a user +TESTED+
 router.post('/updateUser',UserContoller.UpdateUser)
 

@@ -12,6 +12,17 @@ const index = (req, res, next) => {
         })
 }
 
+const getPatients = (req, res, next) => {
+    let assistantPhone = req.body.assistantPhone
+    User.find({assistantPhone :  assistantPhone}).select('name email')
+        .then(response => {
+            res.json({ response })
+        })
+        .catch(error => {
+            res.json({message:'Could  not show the users list'})
+        })
+}
+
 //Get a user +TESTED+
 const show = (req, res, next) =>{
     let userID = req.body.userID 
@@ -62,4 +73,4 @@ const DeleteUser = (req, res, next) => {
         })
 }
 
-module.exports = { index, show, DeleteUser, UpdateUser }
+module.exports = { index, show, DeleteUser, UpdateUser , getPatients}
