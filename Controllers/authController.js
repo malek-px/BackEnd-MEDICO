@@ -1,6 +1,7 @@
 const {User} = require('../Models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { response } = require('express');
 
 //REGISTER +TESTED+
 const register = (req, res, next) => {
@@ -53,6 +54,7 @@ const login = (req, res, next) => {
                     res.json ({message: 'LOGIN Successful', token })
                 }
                 else {
+                    res.status(404)
                     res.json({message:'WRONG PASSWORD'})
                 }
             }
