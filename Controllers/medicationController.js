@@ -13,6 +13,17 @@ const showAll = (req, res, next) => {
         })
 }
 
+const showAlluser = (req, res, next) => {
+    let user = req.body.user
+    Medication.find({ user: user }).select('name dose')
+        .then(response => {
+            res.json({ response })
+        })
+        .catch(error => {
+            res.json({message:'Could  not show the medications list'})
+        })
+}
+
 //Get a meddication +TESTED+
 const showOne = async (req, res) =>{
     let medicationID = req.body.medicationID 
@@ -90,4 +101,4 @@ const remove = (req, res, next) => {
 
 
 
-module.exports = { showAll, showOne, remove, UpdateMedication }
+module.exports = { showAll, showOne, remove, UpdateMedication, showAlluser }

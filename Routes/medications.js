@@ -10,6 +10,9 @@ router.get('/showAll', MedicationContoller.showAll)
 //Get a medication +TESTED+
 router.get('/showOne', MedicationContoller.showOne)
 
+//Get a medication of user
+router.get('/showAlluser', MedicationContoller.showAlluser)
+
 //Update a medication +TESTED+
 router.post('/update',MedicationContoller.UpdateMedication)
 
@@ -62,7 +65,8 @@ router.post(`/add`, uploadOptions.single('image'), async (req, res) =>{
         period: req.body.period,
         quantity: req.body.quantity,
         expDate: req.body.expDate,
-        image: `${basePath}${fileName}`
+        image: `${basePath}${fileName}`,
+        user:req.body.user
     })
     medication = await medication.save();
     if(!medication) {
