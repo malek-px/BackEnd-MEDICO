@@ -25,6 +25,9 @@ const medicationsRoutes = require('./Routes/medications');
 app.use(`${api}/users`, usersRoutes);
 app.use(`${api}`, authRoutes);
 app.use(`${api}/medications`, medicationsRoutes);
+app.use(express.static('Public'));
+
+app.use('/Uploads', express.static(__dirname + '/Uploads'));
 
 //Connecting server
 app.listen(3000, ()=>{

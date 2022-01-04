@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 //Get the medications list +TESTED+
 const showAll = (req, res, next) => {
-    Medication.find().select('name dose')
+    Medication.find().select('name dose image')
         .then(response => {
             res.json({ response })
         })
