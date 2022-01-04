@@ -15,9 +15,9 @@ const index = (req, res, next) => {
 //Get assistant name from phone num
 const findAssistanseName = (req, res, next) => {
     let phone = req.body.assistantPhone
-    User.find({phone : phone}).select('name')
+    User.find({phone : phone})
         .then(response => {
-            res.json({ name : response[0].name })
+            res.json({ user : response[0] })
         })
         .catch(error => {
             res.json({message:'Could  not show the assistant'})
