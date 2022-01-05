@@ -5,18 +5,84 @@ const {Medication} = require('../Models/medication');
 const MedicationContoller = require('../Controllers/medicationController')
 
 //Get the medications list +TESTED+
+
+/**
+ * @swagger
+ * tags:
+ *   name: Medications Route
+ *   description: The medications managing APIs
+ */
+
+/**
+ * @swagger
+ * /api/medications/showAll:
+ *   get:
+ *     tags: [Medications]
+ *     description: Get all medications
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Error Could not show the medications list
+ */ 
+
 router.get('/showAll', MedicationContoller.showAll)
 
 //Get a medication +TESTED+
+
+/**
+ * @swagger
+ * /api/medications/showOne:
+ *   get:
+ *     tags: [Medications]
+ *     description: Get one medication by id
+ *     responses:
+ *       200:
+ *         description: Success
+ *       404:
+ *         description: Error! medication not found
+ */
+
 router.get('/showOne', MedicationContoller.showOne)
 
 //Get a medication of user
 router.get('/showAlluser', MedicationContoller.showAlluser)
 
 //Update a medication +TESTED+
+
+/**
+ * @swagger
+ * /api/medications/update:
+ *   post:
+ *     tags: [Medications]
+ *     description: Update a medication
+ *     parameters: 
+ *       in: "body"
+ *       required: "true"   
+ *     responses:
+ *       200:
+ *         description: Medication updated successfully
+ *       500:
+ *         description: An error Occured
+ */
+
 router.post('/update',MedicationContoller.UpdateMedication)
 
 //Delete a medication +TESTED+
+
+/**
+ * @swagger
+ * /api/medications/remove:
+ *   delete:
+ *     tags: [Medications]
+ *     description: delete medication
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: An error Occured !    
+ */
+
 router.delete('/remove', MedicationContoller.remove)
 
 //router.post('/add', MedicationContoller.add)

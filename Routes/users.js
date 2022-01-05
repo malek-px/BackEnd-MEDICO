@@ -64,12 +64,40 @@ router.get('/showPatients', UserContoller.getPatients)
 router.post('/findAssistant', UserContoller.findAssistanseName)
 
 //Update a user +TESTED+
+
+/**
+ * @swagger
+ * /api/users/updateUser:
+ *   post:
+ *     tags: [Users]
+ *     description: Update a user
+ *     parameters: 
+ *       in: "body"
+ *       required: "true"   
+ *     responses:
+ *       200:
+ *         description: User updated successfully
+ *       500:
+ *         description: An error Occured
+ */
+
 router.post('/updateUser',UserContoller.UpdateUser)
 
 //Delete a user +TESTED+
+
+/**
+ * @swagger
+ * /api/users/deleteUser:
+ *   delete:
+ *     tags: [Users]
+ *     description: delete user
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: An error Occured !    
+ */
+
 router.post('/deleteUser', UserContoller.DeleteUser)
-
-//Forget password
-
 
 module.exports = router;
