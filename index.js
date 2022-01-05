@@ -17,6 +17,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
+//swagger
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: "MEDICO",
+      description: "MEDICO information",
+      contact: {
+        name: "MEDICO application",
+      },
+      server: ["http://localhost:3000"],
+    }
+  },
+  apis: ["./Routes/users.js","./Routes/medications.js","./Routes/auth.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
 //Routes
 const usersRoutes = require('./Routes/users');
 const authRoutes = require('./Routes/auth')
@@ -28,6 +48,9 @@ app.use(`${api}/medications`, medicationsRoutes);
 app.use(express.static('Public'));
 
 app.use('/Uploads', express.static(__dirname + '/Uploads'));
+
+//swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 //Connecting server
 app.listen(3000, ()=>{
