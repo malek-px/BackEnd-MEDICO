@@ -15,7 +15,7 @@ const showAll = (req, res, next) => {
 
 const showAlluser = (req, res, next) => {
     let user = req.body.user
-    Medication.find({ user: user }).select('name dose')
+    Medication.find({ user: user }).select('name dose image')
         .then(response => {
             res.json({ response })
         })
