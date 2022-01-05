@@ -58,9 +58,27 @@ router.get('/show', UserContoller.show)
  *       404:
  *         description: Error!
  */
+
 router.get('/showPatients', UserContoller.getPatients)
 
 //Get assitant name from phone num
+
+/**
+ * @swagger
+ * /api/users/findAssistant:
+ *   post:
+ *     tags: [Users]
+ *     description: find assistant name using a phone number
+ *     parameters: 
+ *       in: "body"
+ *       required: "true"   
+ *     responses:
+ *       200:
+ *         description: success
+ *       500:
+ *         description: Could  not show the assistant
+ */
+
 router.post('/findAssistant', UserContoller.findAssistanseName)
 
 //Update a user +TESTED+

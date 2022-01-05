@@ -25,9 +25,11 @@ const swaggerOptions = {
   swaggerDefinition: {
     info: {
       title: "MEDICO",
-      description: "MEDICO information",
+      description: "MEDICO: mobile application to assist elder people. in order to remind them to have their medication ",
+      version:"1.0.0",
       contact: {
-        name: "MEDICO application",
+        name: "us via email",
+        email:"medico.for.health@gmail.com"
       },
       server: ["http://localhost:3000"],
     }

@@ -116,6 +116,23 @@ const storage = multer.diskStorage({
 const uploadOptions = multer({ storage: storage })
 
 //Add a medication +TESTED+
+
+/**
+ * @swagger
+ * /api/medications/add:
+ *   post:
+ *     tags: [Medications]
+ *     description: Add a medication
+ *     parameters: 
+ *       in: "body"
+ *       required: "true"   
+ *     responses:
+ *       200:
+ *         description: Medication added successfully
+ *       500:
+ *         description: An error Occured
+ */
+
 router.post(`/add`, uploadOptions.single('image'), async (req, res) =>{
     const file = req.file;
     if(!file) return res.status(400).send('image is not uploaded')//validate if the file is uploaded
